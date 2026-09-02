@@ -68,7 +68,9 @@ hl.config({
     },
 })
 
-hl.env("GDK_SCALE", "1.5")
+hl.env("GDK_SCALE", "1.6")
+
+-- Bind a shortcut to open Rofi drun instantly where your mouse is focused
 
 
 hl.config({
@@ -83,15 +85,17 @@ hl.config({
     },
 })
 
+-- DEPENDENCIES --
+-- 1. waybar
+-- 2. mpvpaper
 
+-- Run on startup: --
 hl.on("hyprland.start", function ()
-	-- Add to your autostart or exec-once section
-	hl.exec_cmd("gnome-keyring-daemon --start --components=secrets,ssh,pkcs11")
+	-- Launch the toolbar --
+	hl.exec_cmd("waybar")
 
+	-- Launch the wallpaper  --
 	hl.exec_cmd("mpvpaper -o 'no-audio loop hwdec=no panscan=1.0' '*' ~/Downloads/wallpaper.mp4")
-	hl.exec_cmd("pipewire")
-    	hl.exec_cmd("wireplumber")
-    	hl.exec_cmd("pipewire-pulse")
 end)
 
 -------------------------------
@@ -130,11 +134,11 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
-        gaps_in  = 16,
-        gaps_out = 32,
+        gaps_in  = 8,
+        gaps_out = 16,
 
-        border_size = 2,
-
+        border_size = 1,
+ 
         col = {
             active_border   = "rgba(ffffff99)",
             inactive_border = "rgba(ffffff00)",
@@ -150,7 +154,7 @@ hl.config({
     },
 
     decoration = {
-        rounding       = 2,
+        rounding       = 0,
         rounding_power = 2,
 
         -- Change transparency of focused and unfocused windows
@@ -300,7 +304,7 @@ hl.device({
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Archrosarum's Keybinds --
-hl.bind(mainMod .. " + space", hl.dsp.exec_cmd("rofi -show drun")) -- LAUNCHER 
+hl.bind(mainMod .. " + SUPER_L", hl.dsp.exec_cmd("~/.config/hypr/scripts/launcher.sh"), { release = true })
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close()) -- CLOSE WINDOW
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
@@ -395,12 +399,28 @@ hl.window_rule({
 -- })
 -- overlayLayerRule:set_enabled(fal
 
--- Hyprland-run windowrule
-hl.window_rule({
-    name  = "move-hyprland-run",
-    match = { class = "hyprland-run" },
+-- Define your modifier key
 
-    move  = "20 monitor_h-120",
-    float = true,
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("rofi -show drun"))
+
+
+hl.layer_rule({
+    name = "rofi-style",
+    match = { namespace = "rofi" },
+    blur = true,
+    ignore_alpha = 0.5,   -- lets blur show through transparent bg
 })
 
+-- optional: dim the rest of the screen while rofi is open
+hl.layer_rule({
+    name = "rofi-dim",
+    match = { namespace = "rofi" },
+    dim_around = true,
+})
+
+hl.window_rule({
+    name = "rofi-preview-ghost",
+    match = { class = "^rofi-preview$" },
+    no_initial_focus = true,
+    animation = "none",
+})
