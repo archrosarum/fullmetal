@@ -14,7 +14,7 @@
     hl.bind("SUPER + Q", hl.dsp.window.close())
 
     -- Toggle floating window --
-    hl.bind("SUPER + V", hl.dsp.window.float({ action = "toggle" }))
+    hl.bind("SUPER + F", hl.dsp.window.float({ action = "toggle" }))
     -- Drag floating window --
     hl.bind("SUPER + mouse:272", hl.dsp.window.drag(),   { mouse = true })
     -- Resize floating window --
