@@ -6,20 +6,20 @@ _(Testing and working on both upstream and Asahi ALARM Linux!)_
 ![Preview0](previews/terminals.png)
 ![Preview1](previews/launcher.png)
 
-Default keybinds: (That differ from standard Hyprland)
-   SUPER -> Open the launcher
+__DEFAULT KEYBINDS:__ (That differ from standard Hyprland)
+   __SUPER__ -> Open the launcher
 
-   SUPER + F -> Toggle floating window
-   SUPER + (Drag with left click) -> Move a window
-   SUPER + SHIFT + (Drag with left click) -> Resize a window
-   SUPER + Q -> Close a window
+   __SUPER + F__ -> Toggle floating window  
+   __SUPER + (Drag with left click)__ -> Move a window  
+   __SUPER + SHIFT + (Drag with left click)__ -> Resize a window  
+   __SUPER + Q__ -> Close a window
 
-   SUPER + W -> Open favorite web-browser
-   SUPER + E -> Open favorite file-manager
-   SUPER + R -> Open favorite terminal
-
-   SUPER + P -> Take a screenshot
+   __SUPER + W__ -> Open favorite web-browser  
+   __SUPER + E__ -> Open favorite file-manager  
+   __SUPER + R__ -> Open favorite terminal  
+   
+   __SUPER + P__ -> Take a screenshot
    
 
-DEPENDENCIES:
+__DEPENDENCIES:__  
 Hyprland, Rofi, mpvpaper, grim, kitty
