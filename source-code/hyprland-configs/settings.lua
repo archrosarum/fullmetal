@@ -14,7 +14,7 @@
     -- Keybind for taking a screenshot
     screenshot_keybind = "SUPER + P"
     -- Directory where screenshots are saved
-    screenshot_dir = "~/fullmetal/screenshots"
+    screenshot_dir = "~/screenshots"
     -- Formatting for saved screenshots
     screenshot_format = "/$(date +%Y-%m-%d_%H:%M:%S).png"
 
