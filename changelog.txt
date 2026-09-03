@@ -1,0 +1,13 @@
+Changes from MK-II: (2026-09-03)
+* Launcher is far more reliable, no longer relies on a shell script.
+* Launcher splits neighboring window on open rather than on program launch.
+* Added built-in screenshot functionality.
+* Added an installer script for easy deployment.
+* Quick keybind for your favorite web-browser 
+* Refactored the Hyprland config files for easy(er) user adjustments.
+
+Changes from MK-I: (2026-09-02)
+* Sharper window edges
+* More usage of screen real-estate
+* Launcher now opens over your cursor and previews where the app will go.
+* Launcher is now bound to SUPER instead of SUPER + Space
