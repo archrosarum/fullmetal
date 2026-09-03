@@ -13,11 +13,12 @@ cd "$(dirname "$0")" || exit
 echo "* Ensuring all dependencies..."
 
 PACKAGES=("hyprland" "rofi" "mpvpaper" "grim" "kitty")
-sudo pacman -Sy
+sudo pacman -Syu --noconfirm
 
 if ! command -v yay &> /dev/null; then
     echo "You must install yay to run this installer."
     exit
+fi
 
 for PKG in "${PACKAGES[@]}"; do
     if ! pacman -Qi "$PKG" &> /dev/null; then
@@ -29,18 +30,26 @@ for PKG in "${PACKAGES[@]}"; do
 done
 
 
-mkdir ~/screenshots
+mkdir -p ~/screenshots
 
-mkdir ~/wallpapers
-mkdir ~/wallpapers/animated
-mkdir ~/wallpapers/static
+mkdir -p ~/wallpapers
+mkdir -p ~/wallpapers/animated
+mkdir -p ~/wallpapers/static
 
 
-mv ~/.config/hypr ~/.config/hypr_backup
-mkdir -p ~/.config/hypr && cp -r /source-code/hyprland-configs/* ~/.config/hypr/
+cp -r ./animated-wallpapers/* ~/wallpapers/animated/
 
-mv ~/.config/rofi ~/.config/rofi_backup
-mkdir -p ~/.config/rofi && cp -r /source-code/rofi-configs/* ~/.config/rofi/
+if [ -d "$HOME/.config/hypr" ]; then
+    mv "$HOME/.config/hypr" "$HOME/.config/hypr_backup"
+fi
+mkdir -p ~/.config/hypr && cp -r ./source-code/hyprland-configs/* ~/.config/hypr/
 
-mv ~/.config/kitty ~/.config/kitty_backup
-mkdir -p ~/.config/kitty && cp -r /source-code/kitty-configs/* ~/.config/kitty/
+if [ -d "$HOME/.config/rofi" ]; then
+    mv "$HOME/.config/rofi" "$HOME/.config/rofi_backup"
+fi
+mkdir -p ~/.config/rofi && cp -r ./source-code/rofi-configs/* ~/.config/rofi/
+
+if [ -d "$HOME/.config/kitty" ]; then
+    mv "$HOME/.config/kitty" "$HOME/.config/kitty_backup"
+fi
+mkdir -p ~/.config/kitty && cp -r ./source-code/kitty-configs/* ~/.config/kitty/
