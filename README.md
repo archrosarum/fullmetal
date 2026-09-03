@@ -17,6 +17,7 @@ __DEFAULT KEYBINDS:__ (That differ from standard Hyprland)
    __SUPER + W__ -> Open favorite web-browser  
    __SUPER + E__ -> Open favorite file-manager  
    __SUPER + R__ -> Open favorite terminal  
+   __SUPER + T__ -> Open favorite text editor  
    
    __SUPER + P__ -> Take a screenshot
    
