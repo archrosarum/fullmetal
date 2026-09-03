@@ -1,0 +1,95 @@
+configuration {
+    modi: "drun";
+    show-icons: false;
+    display-drun: "";
+    drun-display-format: "{name}";
+    font: "JetBrainsMono Nerd Font 13";
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+* {
+    background-color: transparent;
+    text-color: #cdd6f4;
+}
+
+window {
+    border-radius: 0px;
+    background-color: #00000099;
+    border: 1px;
+    border-color: #88888899;
+    padding: 8px;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing: 8px;
+}
+
+inputbar {
+    background-color: #00000066;
+    border: 1px;
+    border-color: #88888899;
+    border-radius: 0px;
+    padding: 8px 8px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: #89b4fa;
+    padding: 0 8px 0 0;
+}
+
+entry {
+    placeholder: "Search apps...";
+    text-color: #ffffff;
+    placeholder-color: #a6adc8;
+}
+
+listview {
+    columns: 1;
+    lines: 6;
+    scrollbar: false;
+    padding: 8px 0 0 0;
+    border: 0px;
+}
+
+/* every selection-state x attention-state combo, explicitly, so nothing
+   falls back to rofi's built-in base theme (which is white in places) */
+element normal.normal,
+element normal.urgent,
+element normal.active,
+element selected.normal,
+element selected.urgent,
+element selected.active,
+element alternate.normal,
+element alternate.urgent,
+element alternate.active {
+    background-color: #00000000;
+    border: 0px;
+    border-color: #88888899;
+    border-radius: 0px;
+    padding: 8px;
+}
+
+element selected.normal,
+element selected.urgent,
+element selected.active {
+    border-color: #ffffff;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: #cdd6f4;
+    horizontal-align: 0.5;
+}
+
+element-text selected.normal,
+element-text selected.urgent,
+element-text selected.active {
+    background-color: transparent;
+    text-color: #ffffff;
+    horizontal-align: 0.5;
+    font: "JetBrainsMono Nerd Font Bold 15";
+}
