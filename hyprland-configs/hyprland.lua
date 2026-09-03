@@ -186,7 +186,6 @@ hl.device({
 })
 
 
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
