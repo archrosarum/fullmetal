@@ -6,7 +6,7 @@
 -- Wallpaper --
 
     -- Path to the wallpaper that is applied automatically
-    wallpaper_path = "~/fullmetal/wallpapers/animated/snow-fall_1080.mp4"
+    wallpaper_path = "~/wallpapers/animated/snow-fall_1080.mp4"
 
 
 -- Screenshots --

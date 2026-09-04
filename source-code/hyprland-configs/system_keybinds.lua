@@ -17,7 +17,9 @@
     -- Launch default file explorer --
     hl.bind("SUPER + E", hl.dsp.exec_cmd(favorite_file_explorer))
     -- Launch default terminal --
-    hl.bind("SUPER + R", hl.dsp.exec_cmd(favorite_terminal))
+    hl.bind("SUPER + R", hl.dsp.exec_cmd(favorite_terminal))	
+    -- Launch default text editor  --
+    hl.bind("SUPER + T", hl.dsp.exec_cmd(favorite_text_editor))
 
     -- Exit the window manager --
     hl.bind("SUPER + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))

@@ -3,16 +3,30 @@
 # # # # # # # # # # # # # # # # # # # # # # #
 # INSTALLER SHELL SCRIPT FOR FULLMETAL-ARCH #
 #                                           #
-# VERSION TO INSTALL:                MK-III #
+# VERSION TO INSTALL:              MK-III_I #
 # # # # # # # # # # # # # # # # # # # # # # #
 
 
 cd "$(dirname "$0")" || exit
 
 
+# CONSENT FROM THE USER (NO MEANS NO) #
+
+echo "* BE WARNED that this script will erase its parent directory as a cleanup procedure. Only execute it from within the cloned repository."
+read -p "* Input your understanding of this (y/N): " CONFIRMATION
+if [[ "${CONFIRMATION,,}" == "y" ]]; then
+    sleep 0.5
+else
+    echo "* Aborting installation script."
+    exit
+fi
+
+
+# ENSURE DEPENDENCIES # 
+
 echo "* Ensuring all dependencies..."
 
-PACKAGES=("hyprland" "rofi" "mpvpaper" "grim" "kitty")
+PACKAGES=("hyprland" "rofi" "mpvpaper" "grim" "kitty" "unzip" "ffmpeg" "sublime-text-4" "zen-browser")
 sudo pacman -Syu --noconfirm
 
 if ! command -v yay &> /dev/null; then
@@ -30,6 +44,8 @@ for PKG in "${PACKAGES[@]}"; do
 done
 
 
+# ENSURE DIRECTORIES #
+
 mkdir -p ~/screenshots
 
 mkdir -p ~/wallpapers
@@ -37,7 +53,9 @@ mkdir -p ~/wallpapers/animated
 mkdir -p ~/wallpapers/static
 
 
-cp -r ./animated-wallpapers/* ~/wallpapers/animated/
+# COPY FILES INTO THEIR EXPECTED DIRECTORIES
+
+mv ./animated-wallpapers/snow-fall_1080.mp4 ~/wallpapers/animated/snow-fall_1080.mp4
 
 if [ -d "$HOME/.config/hypr" ]; then
     mv "$HOME/.config/hypr" "$HOME/.config/hypr_backup"
@@ -53,3 +71,9 @@ if [ -d "$HOME/.config/kitty" ]; then
     mv "$HOME/.config/kitty" "$HOME/.config/kitty_backup"
 fi
 mkdir -p ~/.config/kitty && cp -r ./source-code/kitty-configs/* ~/.config/kitty/
+
+
+# DESTROY CLONED REPOSITORY
+
+rm -r  "$(dirname "$0")"
+
